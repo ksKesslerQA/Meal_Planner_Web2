@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Add Meal</title>
+</head>
+<body>
+
+<h2>Add new meal</h2>
+
+<form method="post" action="/meals">
+    <label>Meal name:</label><br>
+    <input type="text" name="name"><br><br>
+
+    <label>Category:</label><br>
+    <select name="category">
+        <option value="breakfast">Breakfast</option>
+        <option value="lunch">Lunch</option>
+        <option value="dinner">Dinner</option>
+    </select><br><br>
+
+    <label>Ingredients:</label><br>
+    <textarea name="ingredients"
+              rows="5"
+              cols="40"
+              placeholder="eggs 2 pcs, milk 200 ml"></textarea><br><br>
+
+    <button type="submit">Save meal</button>
+</form>
+
+<br>
+<a href="/">← Back</a>
+
+</body>
+</html>
