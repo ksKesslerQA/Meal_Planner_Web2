@@ -6,18 +6,18 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Meal {
-    private String mealCategory;
+    private String category;
     private String nameOfMeal;
     private List<Ingredient> ingredients;
 
-    public Meal(String mealCategory, String nameOfMeal, List<Ingredient> ingredients) {
-        this.mealCategory = mealCategory;
+    public Meal(String category, String nameOfMeal, List<Ingredient> ingredients) {
+        this.category = category;
         this.nameOfMeal = nameOfMeal;
         this.ingredients = ingredients;
     }
 
-    public String getMealCategory() {
-        return mealCategory;
+    public String getCategory() {
+        return category;
     }
 
     public String getNameOfMeal() {
@@ -30,15 +30,15 @@ public class Meal {
 
     public static Meal addNewMeal(Scanner scan){
 
-        String mealCategory;
+        String сategory;
         System.out.println("Which meal do you want to add (breakfast, lunch, dinner)?");
 
         while (true) {
-            mealCategory = scan.nextLine();
+            сategory = scan.nextLine();
 
-            if (mealCategory.equals("breakfast") ||
-                    mealCategory.equals("lunch") ||
-                    mealCategory.equals("dinner")) {
+            if (сategory.equals("breakfast") ||
+                    сategory.equals("lunch") ||
+                    сategory.equals("dinner")) {
                 break;
             } else {
                 System.out.println("Wrong meal category! Choose from: breakfast, lunch, dinner.");
@@ -92,7 +92,7 @@ public class Meal {
 
         System.out.println("The meal has been added!");
 
-        return new Meal(mealCategory, nameOfMeal, ingredients);
+        return new Meal(сategory, nameOfMeal, ingredients);
 
     };
 

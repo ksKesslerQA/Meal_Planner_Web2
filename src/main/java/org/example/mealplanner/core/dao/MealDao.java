@@ -36,7 +36,7 @@ public class MealDao {
 
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setInt(1, mealId);
-        ps.setString(2, meal.getMealCategory());
+        ps.setString(2, meal.getCategory());
         ps.setString(3, meal.getNameOfMeal());
 
         ps.executeUpdate();

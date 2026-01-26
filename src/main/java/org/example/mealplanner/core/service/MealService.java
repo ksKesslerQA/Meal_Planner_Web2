@@ -31,4 +31,15 @@ public class MealService {
             throw new RuntimeException("Failed to fetch meals by category: " + category, e);
         }
     }
+
+    public void addMeal(Meal meal) {
+        try {
+            int mealId = mealDao.getNextMealId();
+            mealDao.saveMeal(meal, mealId);
+            mealDao.saveIngredients(meal.getIngredients(), mealId);
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to save meal", e);
+        }
+    }
+
 }

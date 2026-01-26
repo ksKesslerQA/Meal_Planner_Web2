@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Meals</title>
+</head>
+<script>
+    function toggleIngredients(element) {
+        const ingredients = element.nextElementSibling;
+
+        if (ingredients.style.display === "none") {
+            ingredients.style.display = "block";
+        } else {
+            ingredients.style.display = "none";
+        }
+    }
+</script>
+<style>
+    .meal-name {
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .meal-name:hover {
+        text-decoration: underline;
+    }
+
+    .ingredients {
+        margin-left: 20px;
+        margin-top: 5px;
+    }
+</style>
+<body>
+
+<h2>Meals</h2>
+
+<form method="get" action="/meals">
+    <input type="text"
+           name="search"
+           placeholder="Search meal..."
+           th:value="${search}"/>
+
+    <select name="category">
+        <option value="">All</option>
+        <option value="breakfast">Breakfast</option>
+        <option value="lunch">Lunch</option>
+        <option value="dinner">Dinner</option>
+    </select>
+
+    <button type="submit">Filter</button>
+</form>
+
+
+<ul>
+    <li th:each="meal : ${meals}">
+        <div class="meal-name"
+             onclick="toggleIngredients(this)">
+            <b th:text="${meal.nameOfMeal}"></b>
+            (<span th:text="${meal.category}"></span>)
+        </div>
+
+        <ul class="ingredients" style="display: none;">
+            <li th:each="ing : ${meal.ingredients}">
+                <span th:text="${ing.name}"></span>
+                —
+                <span th:text="${ing.amount}"></span>
+                <span th:text="${ing.unit}"></span>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+
+<br>
+<a href="/">← Back</a>
+
+</body>
+</html>
