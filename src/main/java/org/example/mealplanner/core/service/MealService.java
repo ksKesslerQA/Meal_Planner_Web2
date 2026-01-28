@@ -32,7 +32,7 @@ public class MealService {
         }
     }
 
-    public void addMeal(Meal meal) {
+    public void saveMeal(Meal meal) {
         try {
             int mealId = mealDao.getNextMealId();
             mealDao.saveMeal(meal, mealId);
