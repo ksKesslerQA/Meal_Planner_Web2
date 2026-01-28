@@ -4,10 +4,13 @@ import org.example.mealplanner.core.dao.MealDao;
 import org.example.mealplanner.core.dao.PlanDao;
 import org.example.mealplanner.core.model.DaysOfTheWeek;
 import org.example.mealplanner.core.model.Meal;
+import org.example.mealplanner.core.model.MealPlan;
+import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
 import java.util.List;
 
+@Service
 public class PlanService {
 
     private final MealDao mealDao;
@@ -40,5 +43,10 @@ public class PlanService {
                 mealId
         );
     }
+
+    public List<MealPlan> getWeeklyPlan() throws SQLException {
+        return planDao.getWeeklyPlan();
+    }
+
 }
 

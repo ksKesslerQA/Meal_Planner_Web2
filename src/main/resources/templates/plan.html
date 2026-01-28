@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Plan</title>
+</head>
+<body>
+
+<h2>Create weekly plan</h2>
+
+<form method="post" action="/plan">
+
+    <div th:each="entry : ${form.days}">
+        <h3 th:text="${entry.key}"></h3>
+
+        Breakfast:
+        <select th:name="days[__${entry.key}__].breakfast">
+            <option value="">—</option>
+            <option th:each="meal : ${meals}"
+                    th:value="${meal.nameOfMeal}"
+                    th:text="${meal.nameOfMeal}">
+            </option>
+        </select>
+
+        Lunch:
+        <select th:name="days[__${entry.key}__].lunch">
+            <option value="">—</option>
+            <option th:each="meal : ${meals}"
+                    th:value="${meal.nameOfMeal}"
+                    th:text="${meal.nameOfMeal}">
+            </option>
+        </select>
+
+        Dinner:
+        <select th:name="days[__${entry.key}__].dinner">
+            <option value="">—</option>
+            <option th:each="meal : ${meals}"
+                    th:value="${meal.nameOfMeal}"
+                    th:text="${meal.nameOfMeal}">
+            </option>
+        </select>
+
+        <hr>
+    </div>
+
+    <button type="submit">Save plan</button>
+</form>
+
+
+<br>
+<a href="/">← Back</a>
+
+</body>
+</html>

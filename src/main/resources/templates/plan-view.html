@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Weekly Plan</title>
+</head>
+<body>
+
+<h2>Your weekly plan</h2>
+
+<div th:each="plan : ${plans}">
+    <h3 th:text="${plan.day}"></h3>
+    <p>Breakfast: <span th:text="${plan.breakfast}"></span></p>
+    <p>Lunch: <span th:text="${plan.lunch}"></span></p>
+    <p>Dinner: <span th:text="${plan.dinner}"></span></p>
+</div>
+
+<br>
+<a href="/">← Back</a>
+
+</body>
+</html>

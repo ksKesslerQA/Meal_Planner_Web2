@@ -1,6 +1,7 @@
 package org.example.mealplanner.config;
 
 import org.example.mealplanner.core.dao.MealDao;
+import org.example.mealplanner.core.dao.PlanDao;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,5 +16,10 @@ public class DaoConfig {
     public MealDao mealDao(DataSource dataSource) throws SQLException {
         Connection connection = dataSource.getConnection();
         return new MealDao(connection);
+    }
+
+    @Bean
+    public PlanDao planDao(DataSource dataSource) throws SQLException {
+        return new PlanDao(dataSource.getConnection());
     }
 }
