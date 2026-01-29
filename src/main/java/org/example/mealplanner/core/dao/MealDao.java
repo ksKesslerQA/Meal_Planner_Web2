@@ -32,12 +32,13 @@ public class MealDao {
     }
 
     public void saveMeal(Meal meal, int mealId) throws SQLException {
-        String sql = "INSERT INTO meals (meal_id, category, meal) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO meals (meal_id, category, meal, recipe) VALUES (?, ?, ?, ?)";
 
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setInt(1, mealId);
         ps.setString(2, meal.getCategory());
         ps.setString(3, meal.getNameOfMeal());
+        ps.setString(4, meal.getRecipe());
 
         ps.executeUpdate();
         ps.close();
@@ -65,6 +66,7 @@ public class MealDao {
         SELECT m.meal_id,
                m.category,
                m.meal,
+               m.recipe,
                i.name,
                i.amount,
                i.unit
@@ -93,7 +95,7 @@ public class MealDao {
                 currentMeal = new Meal(
                         rs.getString("category"),
                         rs.getString("meal"),
-                        ingredients
+                        ingredients, rs.getString("recipe")
                 );
                 currentMealId = mealId;
             }
@@ -121,6 +123,7 @@ public class MealDao {
         SELECT m.meal_id,
                m.category,
                m.meal,
+               m.recipe,
                i.name,
                i.amount,
                i.unit
@@ -152,7 +155,7 @@ public class MealDao {
                 currentMeal = new Meal(
                         rs.getString("category"),
                         rs.getString("meal"),
-                        ingredients
+                        ingredients, rs.getString("recipe")
                 );
                 currentMealId = mealId;
             }

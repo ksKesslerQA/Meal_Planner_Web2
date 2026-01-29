@@ -9,13 +9,22 @@ public class Meal {
     private String category;
     private String nameOfMeal;
     private List<Ingredient> ingredients;
+    private String recipe;
 
-    public Meal(String category, String nameOfMeal, List<Ingredient> ingredients) {
+    public Meal(String category, String nameOfMeal, List<Ingredient> ingredients, String recipe) {
         this.category = category;
         this.nameOfMeal = nameOfMeal;
         this.ingredients = ingredients;
+        this.recipe = recipe;
     }
 
+    public Meal(String category, String nameOfMeal, List<Ingredient> ingredients) {
+        this(category, nameOfMeal, ingredients, null);
+    }
+
+    public String getRecipe() {
+        return recipe;
+    }
     public String getCategory() {
         return category;
     }
