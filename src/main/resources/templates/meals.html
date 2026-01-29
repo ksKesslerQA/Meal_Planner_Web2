@@ -66,6 +66,13 @@
                 <span th:text="${ing.amount}"></span>
                 <span th:text="${ing.unit}"></span>
             </li>
+            <div th:if="${meal.recipe != null}">
+                <details>
+                    <summary>📖 Recipe</summary>
+                    <pre th:text="${meal.recipe}"></pre>
+                </details>
+            </div>
+
         </ul>
     </li>
 </ul>

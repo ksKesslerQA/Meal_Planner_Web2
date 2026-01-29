@@ -42,6 +42,7 @@ public class MealController {
     public String addMeal(
             @RequestParam String name,
             @RequestParam String category,
+            @RequestParam(required = false) String recipe,
             @RequestParam List<String> ingredientName,
             @RequestParam List<Double> ingredientAmount,
             @RequestParam List<String> ingredientUnit
@@ -58,7 +59,7 @@ public class MealController {
         }
 
 
-        Meal meal = new Meal(category, name, ingredients);
+        Meal meal = new Meal(category, name, ingredients, recipe == null || recipe.isBlank() ? null : recipe);
 
         mealService.saveMeal(meal);
 
